@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Elden Ring Checklist - Track your progress by location">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>Elden Ring Checklist</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>⚔️ Elden Ring Checklist</h1>
+            <div class="header-stats">
+                <div class="stat">
+                    <span class="stat-label">Overall Progress</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="overallProgress"></div>
+                    </div>
+                    <span class="stat-value" id="overallPercentage">0%</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button id="resetBtn" class="btn btn-danger">Reset All</button>
+            <button id="exportBtn" class="btn btn-secondary">Export Data</button>
+        </div>
+
+        <!-- Locations List -->
+        <main class="locations-container" id="locationsContainer">
+            <!-- Locations will be generated here by JavaScript -->
+        </main>
+    </div>
+
+    <!-- Location Details Modal -->
+    <div id="locationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="bosses">Bosses</button>
+                    <button class="tab-btn" data-tab="treasures">Treasures</button>
+                    <button class="tab-btn" data-tab="items">Items</button>
+                    <button class="tab-btn" data-tab="npcs">NPCs</button>
+                </div>
+
+                <!-- Tab Content -->
+                <div id="bosses" class="tab-content active">
+                    <div class="items-list" id="bossesList"></div>
+                </div>
+                <div id="treasures" class="tab-content">
+                    <div class="items-list" id="treasuresList"></div>
+                </div>
+                <div id="items" class="tab-content">
+                    <div class="items-list" id="itemsList"></div>
+                </div>
+                <div id="npcs" class="tab-content">
+                    <div class="items-list" id="npcsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+</body>
+</html>
